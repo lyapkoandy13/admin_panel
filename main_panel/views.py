@@ -31,9 +31,3 @@ def logout(request):
 	auth.logout(request)
 
 	return redirect('/')
-
-def create_user(request):
-	user = User.objects.create_user(username='admin',
-                                 email='lyapkoandy13@gmail.com',
-                                 password='K-support3!')
-	return render(request, 'main_panel/login.html')

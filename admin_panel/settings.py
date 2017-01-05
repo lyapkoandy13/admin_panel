@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS =[
 	'31.41.88.210',
+    'localhost',
 ]
 
 
@@ -34,6 +35,7 @@ ALLOWED_HOSTS =[
 
 INSTALLED_APPS = (
     'main_panel',
+    'wienerberger',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

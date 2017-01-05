@@ -1,0 +1,133 @@
+{% extends 'main_panel/layout.html' %}
+
+{% block content %}
+	{% load static %}
+	
+	<link rel="stylesheet" type="text/css" href="{% static "main_panel/css/switch.css" %}">
+	<div class="container body-content">
+		<p></p>
+
+		<div class="row">        
+		    <a href="" class="btn btn-success "><span class="glyphicon glyphicon-download-alt"></span> Download android app</a>
+		</div><br>
+
+		<table id="users" class="table table-hover table-striped ">
+                <thead>
+                  <tr id="select-all-tr">
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Firstname</th>
+                    <th>Secondname</th>
+                    <th>Email</th>
+                    <th>Дозволити пересилку даних</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+{#                <tr id="1">#}
+{#                    <td>1</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>#}
+{#                    	<label class="switch">#}
+{#						  <input type="checkbox">#}
+{#						  <div class="slider round"></div>#}
+{#						</label>#}
+{#					</td>#}
+{#                    <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>#}
+{#                    </td>#}
+{#                </tr>#}
+{##}
+{#                <tr id="2">#}
+{#                    <td>2</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>Example</td>#}
+{#                    <td>#}
+{#                    	<label class="switch">#}
+{#						  <input type="checkbox">#}
+{#						  <div class="slider round"></div>#}
+{#						</label>#}
+{#					</td>#}
+{#                    <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>#}
+{#                    </td>#}
+{#                </tr>#}
+         
+            </tbody>
+        </table>
+	</div>
+
+    <script type="text/javascript">
+        function load_content(){
+            var html = "";
+            $.post("/get_users",function(data){
+                users = JSON.parse(data);
+                users.forEach(item, i, arr)
+                {
+
+                    html = html
+                        +'<tr id="'+item["id"]+'">'
+                            + '<td>'+item["id"]+'</td>'
+                            + '<td>'+item["date"]+'</td>'
+                            + '<td>'+item["firstname"]+'</td>'
+                            + '<td>'+item["secondname"]+'</td>'
+                            + '<td>'+item["email"]+'</td>'
+                            + '<td>'
+                                + '<label class="switch">';
+
+                    if(item["auth"]==1) {
+                        html = html
+                            +'<input class="change-auth" type="checkbox" checked>';
+                    } else {
+                        html = html
+                            +'<input class="change-auth" type="checkbox">';
+                    }
+
+                    html = html
+                                    + '<div class="slider round"></div>'
+                                + '</label>'
+                            + '</td>'
+                            + '<td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>'
+                            + '</td>'
+                        + '</tr>';
+
+                    $("#users").append(html);
+
+                    $(".remove-user").click(function(){
+                        var tr = $(this).parent();
+                        var id = tr.attr("id");
+                        $.post("/delete_user", {id: id}, function(data){
+                            if (data=="success") {
+                                tr.remove();
+                            }
+                        });
+                    });
+
+                    $(".change_auth").click(function(){
+                        var checked = $(this).is(":checked");
+                        var id = $(this).parent().parent().parent().attr("id");
+                        var url = "";
+                        if (checked){
+                            url = "/deny_access";
+                        } else {
+                            url = "/grant_access";
+                        }
+
+                        $.post(url, {id:id}, function(data){
+
+                        });
+                    });
+
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            load_content();
+        })
+    </script>
+	
+{% endblock %}
