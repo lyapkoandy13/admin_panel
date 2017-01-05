@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 
 def index(request):
 	if request.user.is_authenticated():
-		return render(request, 'main_panel/bazalt.html')
+		return render(request, 'main_panel/main_panel.html')
 	else:
 		return render(request, 'main_panel/login.html')
 
