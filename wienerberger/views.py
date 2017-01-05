@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 import json
 import urllib.request
 from wienerberger.models import WienerbergerUser
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -16,6 +17,7 @@ def index(request):
 	else:
 		return redirect('/')
 
+@csrf_exempt
 def create_user(request):
 	token = request.POST.get('token','')
 	firstname = request.POST.get('firstname','')
