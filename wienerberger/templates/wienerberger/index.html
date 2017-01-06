@@ -62,12 +62,6 @@
 
     <script type="text/javascript">
 
-        $("body").bind("ajaxSend", function(elm, xhr, s){
-           if (s.type == "POST") {
-              xhr.setRequestHeader('X-CSRF-Token', getCSRFTokenValue());
-           }
-        });
-
         function load_content(){
             var html = "";
             $.ajax({

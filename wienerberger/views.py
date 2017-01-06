@@ -75,6 +75,8 @@ def deny_access(request):
 
 	return HttpResponse("success")
 
+
+@csrf_exempt
 def get_users(request):
 	a = WienerbergerUser.objects.all()
 	json_data = serializers.serialize('json', a)
