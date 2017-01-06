@@ -80,4 +80,4 @@ def deny_access(request):
 def get_users(request):
 	a = WienerbergerUser.objects.all()
 	json_data = serializers.serialize('json', a)
-	return JsonResponse(json_data)
+	return JsonResponse(json_data, safe=False)
