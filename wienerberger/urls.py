@@ -9,4 +9,5 @@ urlpatterns = [
 	url(r'^delete_user/', views.delete_user, name="delete_user"),
 	url(r'^grant_access/', views.grant_access, name="grant_access"),
 	url(r'^deny_access/', views.deny_access, name="deny_access"),
+	url(r'^get_users/', views.get_users, name="get_users"),
 ]

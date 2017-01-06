@@ -9,6 +9,8 @@ import urllib.request
 from wienerberger.models import WienerbergerUser
 from django.views.decorators.csrf import csrf_exempt
 import datetime
+from django.http import JsonResponse
+from django.core import  serializers
 
 # Create your views here.
 
@@ -72,3 +74,8 @@ def deny_access(request):
 	WienerbergerUser.objects.filter(id=id).update(auth=0)
 
 	return HttpResponse("success")
+
+def get_users(request):
+	a = WienerbergerUser.objects.all()
+	json_data = serializers.serialize('json', a)
+	return JsonResponse(json_data)
