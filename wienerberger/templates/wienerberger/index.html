@@ -61,9 +61,20 @@
 	</div>
 
     <script type="text/javascript">
+
+        $("body").bind("ajaxSend", function(elm, xhr, s){
+           if (s.type == "POST") {
+              xhr.setRequestHeader('X-CSRF-Token', getCSRFTokenValue());
+           }
+        });
+
         function load_content(){
             var html = "";
-            $.post("/wienerberger/get_users/",function(data){
+            $.ajax({
+                url: "/wienerberger/get_users/",
+                type: "post",
+
+                success: function(data){
                 users = JSON.parse(data);
                 users.forEach(item, i, arr)
                 {
@@ -122,6 +133,7 @@
                     });
 
                 }
+            }
             });
         }
 
