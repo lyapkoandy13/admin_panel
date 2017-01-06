@@ -8,6 +8,7 @@ import json
 import urllib.request
 from wienerberger.models import WienerbergerUser
 from django.views.decorators.csrf import csrf_exempt
+import datetime
 
 # Create your views here.
 
@@ -23,7 +24,8 @@ def create_user(request):
 	firstname = request.POST.get('firstname','')
 	secondname = request.POST.get('secondname','')
 	email = request.POST.get('email','')
-	a = WienerbergerUser(token=token,firstname=firstname,secondname=secondname,email=email)
+	date = datetime.datetime.now().strftime("%d-%m-%Y")
+	a = WienerbergerUser(token=token,firstname=firstname,secondname=secondname,email=email,auth=0,date=date)
 	a.save()
 	
 	return HttpResponse('success')
