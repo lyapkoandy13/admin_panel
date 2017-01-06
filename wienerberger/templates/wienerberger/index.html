@@ -63,7 +63,7 @@
     <script type="text/javascript">
         function load_content(){
             var html = "";
-            $.post("/get_users",function(data){
+            $.post("/wienerberger/get_users",function(data){
                 users = JSON.parse(data);
                 users.forEach(item, i, arr)
                 {
