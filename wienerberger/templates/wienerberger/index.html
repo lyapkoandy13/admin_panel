@@ -70,7 +70,7 @@
 
                 success: function(data){
                 users = JSON.parse(data);
-                users.forEach(item, i, arr)
+                $.each(users, function (i, item)
                 {
 
                     html = html
@@ -126,7 +126,7 @@
                         });
                     });
 
-                }
+                });
             }
             });
         }
