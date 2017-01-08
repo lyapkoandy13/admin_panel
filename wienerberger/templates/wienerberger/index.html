@@ -33,7 +33,7 @@
                         <td>
                             <label class="switch">
                                 {% if user.auth == 1 %}
-                                    <input type="checkbox" checked>
+                                    <input class="change-auth" type="checkbox" checked>
                                 {% else %}
                                     <input type="checkbox">
                                 {% endif %}
@@ -133,7 +133,7 @@
                         });
                     });
 
-                    $(".change_auth").click(function(){
+                    $(".change-auth").click(function(){
                         var checked = $(this).is(":checked");
                         var id = $(this).parent().parent().parent().attr("id");
                         var url = "";
@@ -147,7 +147,7 @@
 
                         });
                     });
-        })
+        });
     </script>
 	
 {% endblock %}

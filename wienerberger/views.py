@@ -61,6 +61,7 @@ def send_message(request):
 @csrf_exempt
 def delete_user(request):
 	id = request.POST.get('id','')
+	id = int(id)
 	WienerbergerUser.objects.filter(id=id).delete()
 
 	return HttpResponse("success")
