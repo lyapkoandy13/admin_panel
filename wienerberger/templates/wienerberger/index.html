@@ -11,6 +11,16 @@
 		    <a href="" class="btn btn-success "><span class="glyphicon glyphicon-download-alt"></span> Download android app</a>
 		</div><br>
 
+        <form action="/send_message" method="POST">
+
+            <h3>Send message</h3>
+            <textarea name="message" class="form-control">
+
+            </textarea>
+            <input type="submit" class="btn btn-primary form-control" value="Send"/>
+
+        </form>
+
 		<table id="users" class="table table-hover table-striped ">
                 <thead>
                   <tr id="select-all-tr">
@@ -24,26 +34,27 @@
                 </thead>
                 <tbody>
                 {% for user in wienerbergerusers %}
-                    <tr id="{{ user.id }}">
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.date }}</td>
-                        <td>{{ user.firstname }}</td>
-                        <td>{{ user.secondname }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <label class="switch">
-                                {% if user.auth == 1 %}
-                                    <input class="change-auth" type="checkbox" checked>
-                                {% else %}
-                                    <input type="checkbox">
-                                {% endif %}
-                              <div class="slider round"></div>
-                            </label>
-                        </td>
-                        <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>
-                        </td>
-                    </tr>
-
+                    <div id="{{ user.id }}">
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.date }}</td>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.secondname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <label class="switch">
+                                    {% if user.auth == 1 %}
+                                        <input class="change-auth" type="checkbox" checked>
+                                    {% else %}
+                                        <input type="checkbox">
+                                    {% endif %}
+                                  <div class="slider round"></div>
+                                </label>
+                            </td>
+                            <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+                            </td>
+                        </tr>
+                    </div>
                 {% endfor %}
          
             </tbody>
@@ -124,18 +135,19 @@
         $(document).ready(function () {
 {#            load_content();#}
             $(".remove-user").click(function(){
-                        var tr = $(this).parent();
-                        var id = tr.attr("id");
+                        var div = $(this).parent().parent();
+                        var id = div.attr("id");
                         $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
-                                tr.remove();
+                                div.remove();
                             }
                         });
                     });
 
-                    $(".change-auth").click(function(){
+            $(".change-auth").click(function(){
+                alert("WORKS");
                         var checked = $(this).is(":checked");
-                        var id = $(this).parent().parent().parent().attr("id");
+                        var id = $(this).parent().parent().parent().parent().attr("id");
                         var url = "";
                         if (checked){
                             url = "/wienerberger/delete_user/";
