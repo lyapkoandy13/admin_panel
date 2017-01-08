@@ -35,8 +35,7 @@ def create_user(request):
 
 def send_message(request):
 	message = request.POST.get('message','')
-	users = WienerbergerUser.objects.filter(auth=1)
-	tokens = users.token
+	tokens = WienerbergerUser.objects.filter(auth=1).values_list('token', flat=True)
 
 	data = {
 		"data": {
