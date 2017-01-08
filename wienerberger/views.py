@@ -17,7 +17,7 @@ from django.core import  serializers
 def index(request):
 	if request.user.is_authenticated():
 		wienerbergerusers = WienerbergerUser.objects.all()
-		return render(request, 'wienerberger/index.html', wienerbergerusers)
+		return render(request, 'wienerberger/index.html', {'wienerbergerusers' : wienerbergerusers})
 	else:
 		return redirect('/')
 
