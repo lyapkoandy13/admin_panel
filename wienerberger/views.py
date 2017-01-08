@@ -58,18 +58,21 @@ def send_message(request):
 
 	return HttpResponse('success')
 
+@csrf_exempt
 def delete_user(request):
 	id = request.POST.get('id','')
 	WienerbergerUser.objects.filter(id=id).delete()
 
 	return HttpResponse("success")
 
+@csrf_exempt
 def grant_access(request):
 	id = request.POST.get('id', '')
 	WienerbergerUser.objects.filter(id=id).update(auth=1)
 
 	return HttpResponse("success")
 
+@csrf_exempt
 def deny_access(request):
 	id = request.POST.get('id', '')
 	WienerbergerUser.objects.filter(id=id).update(auth=0)

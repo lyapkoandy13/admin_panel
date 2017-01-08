@@ -29,7 +29,7 @@
                         <td>{{ user.date }}</td>
                         <td>{{ user.firstname }}</td>
                         <td>{{ user.secondname }}</td>
-                        <td>{{ users.email }}</td>
+                        <td>{{ user.email }}</td>
                         <td>
                             <label class="switch">
                                 {% if user.auth == 1 %}
@@ -126,7 +126,7 @@
             $(".remove-user").click(function(){
                         var tr = $(this).parent();
                         var id = tr.attr("id");
-                        $.post("/delete_user", {id: id}, function(data){
+                        $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
                                 tr.remove();
                             }
@@ -138,9 +138,9 @@
                         var id = $(this).parent().parent().parent().attr("id");
                         var url = "";
                         if (checked){
-                            url = "/deny_access";
+                            url = "/wienerberger/delete_user/";
                         } else {
-                            url = "/grant_access";
+                            url = "/wienerberger/delete_user/";
                         }
 
                         $.post(url, {id:id}, function(data){
