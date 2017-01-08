@@ -16,7 +16,8 @@ from django.core import  serializers
 
 def index(request):
 	if request.user.is_authenticated():
-		return render(request, 'wienerberger/index.html')
+		wienerbergerusers = WienerbergerUser.objects.all()
+		return render(request, 'wienerberger/index.html', wienerbergerusers)
 	else:
 		return redirect('/')
 
@@ -76,8 +77,8 @@ def deny_access(request):
 	return HttpResponse("success")
 
 
-@csrf_exempt
-def get_users(request):
-	a = WienerbergerUser.objects.all()
-	json_data = serializers.serialize('json', list(a), fields=('id','firstname','secondname','token','auth','date'))
-	return JsonResponse(json_data, safe=False)
+# @csrf_exempt
+# def get_users(request):
+# 	a = WienerbergerUser.objects.all()
+# 	json_data = serializers.serialize('json', list(a), fields=('id','firstname','secondname','token','auth','date'))
+# 	return JsonResponse(json_data, safe=False)

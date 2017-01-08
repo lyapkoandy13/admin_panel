@@ -23,85 +23,107 @@
                   </tr>
                 </thead>
                 <tbody>
+                {% for user in wienerbergerusers %}
+                    <tr id="{{ user.id }}">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.date }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.secondname }}</td>
+                        <td>{{ users.email }}</td>
+                        <td>
+                            <label class="switch">
+                                {% if user.auth == 1 %}
+                                    <input type="checkbox" checked>
+                                {% else %}
+                                    <input type="checkbox">
+                                {% endif %}
+                              <div class="slider round"></div>
+                            </label>
+                        </td>
+                        <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+                        </td>
+                    </tr>
 
-{#                <tr id="1">#}
-{#                    <td>1</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>#}
-{#                    	<label class="switch">#}
-{#						  <input type="checkbox">#}
-{#						  <div class="slider round"></div>#}
-{#						</label>#}
-{#					</td>#}
-{#                    <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>#}
-{#                    </td>#}
-{#                </tr>#}
-{##}
-{#                <tr id="2">#}
-{#                    <td>2</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>Example</td>#}
-{#                    <td>#}
-{#                    	<label class="switch">#}
-{#						  <input type="checkbox">#}
-{#						  <div class="slider round"></div>#}
-{#						</label>#}
-{#					</td>#}
-{#                    <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>#}
-{#                    </td>#}
-{#                </tr>#}
+                {% endfor %}
          
             </tbody>
         </table>
 	</div>
 
     <script type="text/javascript">
-
-        function load_content(){
-            var html = "";
-            $.ajax({
-                url: "/wienerberger/get_users/",
-                type: "post",
-
-                success: function(data){
-                users = JSON.parse(data);
-                $.each(users, function (i, item)
-                {
-
-                    html = html
-                        +'<tr id="'+item["id"]+'">'
-                            + '<td>'+item["id"]+'</td>'
-                            + '<td>'+item["date"]+'</td>'
-                            + '<td>'+item["firstname"]+'</td>'
-                            + '<td>'+item["secondname"]+'</td>'
-                            + '<td>'+item["email"]+'</td>'
-                            + '<td>'
-                                + '<label class="switch">';
-
-                    if(item["auth"]==1) {
-                        html = html
-                            +'<input class="change-auth" type="checkbox" checked>';
-                    } else {
-                        html = html
-                            +'<input class="change-auth" type="checkbox">';
-                    }
-
-                    html = html
-                                    + '<div class="slider round"></div>'
-                                + '</label>'
-                            + '</td>'
-                            + '<td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>'
-                            + '</td>'
-                        + '</tr>';
-
-                    $("#users").append(html);
-
-                    $(".remove-user").click(function(){
+{##}
+{#        function load_content(){#}
+{#            var html = "";#}
+{#            $.ajax({#}
+{#                url: "/wienerberger/get_users/",#}
+{#                type: "post",#}
+{##}
+{#                success: function(data){#}
+{#                users = JSON.parse(data);#}
+{#                $.each(users, function (i, item)#}
+{#                {#}
+{##}
+{#                    html = html#}
+{#                        +'<tr id="'+item["id"]+'">'#}
+{#                            + '<td>'+item["id"]+'</td>'#}
+{#                            + '<td>'+item["date"]+'</td>'#}
+{#                            + '<td>'+item["firstname"]+'</td>'#}
+{#                            + '<td>'+item["secondname"]+'</td>'#}
+{#                            + '<td>'+item["email"]+'</td>'#}
+{#                            + '<td>'#}
+{#                                + '<label class="switch">';#}
+{##}
+{#                    if(item["auth"]==1) {#}
+{#                        html = html#}
+{#                            +'<input class="change-auth" type="checkbox" checked>';#}
+{#                    } else {#}
+{#                        html = html#}
+{#                            +'<input class="change-auth" type="checkbox">';#}
+{#                    }#}
+{##}
+{#                    html = html#}
+{#                                    + '<div class="slider round"></div>'#}
+{#                                + '</label>'#}
+{#                            + '</td>'#}
+{#                            + '<td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>'#}
+{#                            + '</td>'#}
+{#                        + '</tr>';#}
+{##}
+{#                    $("#users").append(html);#}
+{##}
+{#                    $(".remove-user").click(function(){#}
+{#                        var tr = $(this).parent();#}
+{#                        var id = tr.attr("id");#}
+{#                        $.post("/delete_user", {id: id}, function(data){#}
+{#                            if (data=="success") {#}
+{#                                tr.remove();#}
+{#                            }#}
+{#                        });#}
+{#                    });#}
+{##}
+{#                    $(".change_auth").click(function(){#}
+{#                        var checked = $(this).is(":checked");#}
+{#                        var id = $(this).parent().parent().parent().attr("id");#}
+{#                        var url = "";#}
+{#                        if (checked){#}
+{#                            url = "/deny_access";#}
+{#                        } else {#}
+{#                            url = "/grant_access";#}
+{#                        }#}
+{##}
+{#                        $.post(url, {id:id}, function(data){#}
+{##}
+{#                        });#}
+{#                    });#}
+{##}
+{#                });#}
+{#            }#}
+{#            });#}
+{#        }#}
+{##}
+        $(document).ready(function () {
+{#            load_content();#}
+            $(".remove-user").click(function(){
                         var tr = $(this).parent();
                         var id = tr.attr("id");
                         $.post("/delete_user", {id: id}, function(data){
@@ -125,14 +147,6 @@
 
                         });
                     });
-
-                });
-            }
-            });
-        }
-
-        $(document).ready(function () {
-            load_content();
         })
     </script>
 	
