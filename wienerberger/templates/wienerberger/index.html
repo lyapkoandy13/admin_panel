@@ -11,8 +11,8 @@
 		    <a href="" class="btn btn-success "><span class="glyphicon glyphicon-download-alt"></span> Download android app</a>
 		</div><br>
 
-        <form action="/send_message" method="POST">
-
+        <form action="/wienerberger/send_message/" method="POST">
+            {% csrf_token %}
             <h3>Send message</h3>
             <textarea name="message" class="form-control">
 
@@ -46,7 +46,7 @@
                                     {% if user.auth == 1 %}
                                         <input class="change-auth" type="checkbox" checked>
                                     {% else %}
-                                        <input type="checkbox">
+                                        <input class="change-auth" type="checkbox">
                                     {% endif %}
                                   <div class="slider round"></div>
                                 </label>
@@ -136,6 +136,7 @@
 {#            load_content();#}
             $(".remove-user").click(function(){
                         var div = $(this).parent().parent();
+                        alert("div "+div);
                         var id = div.attr("id");
                         $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
@@ -147,7 +148,14 @@
             $(".change-auth").click(function(){
                 alert("WORKS");
                         var checked = $(this).is(":checked");
-                        var id = $(this).parent().parent().parent().parent().attr("id");
+                        var p1 = $(this).parent();
+                        alert("1 "+p1);
+                        var p2 = p1.parent();
+                        alert("2 "+p2);
+                        var p3 = p2.parent();
+                        alert("3 "+p3);
+                        var p4 = p3.parent().attr("id");
+                        alert("4 "+p4);
                         var url = "";
                         if (checked){
                             url = "/wienerberger/delete_user/";
