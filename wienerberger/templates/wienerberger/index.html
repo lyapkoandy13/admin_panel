@@ -14,12 +14,14 @@
         <form action="/wienerberger/send_message/" method="POST">
             {% csrf_token %}
             <h3>Send message</h3>
-            <textarea name="message" class="form-control">
+            <textarea width="250" name="message" class="form-control" rows="4" style="resize: none">
 
             </textarea>
             <input type="submit" class="btn btn-primary form-control" value="Send"/>
 
         </form>
+
+        <hr>
 
 		<table id="users" class="table table-hover table-striped ">
                 <thead>
@@ -34,7 +36,7 @@
                 </thead>
                 <tbody>
                 {% for user in wienerbergerusers %}
-                    <div id="{{ user.id }}">
+                    <div class="user-row" id="{{ user.id }}">
                         <tr>
                             <td>{{ user.id }}</td>
                             <td>{{ user.date }}</td>
@@ -135,7 +137,7 @@
         $(document).ready(function () {
 {#            load_content();#}
             $(".remove-user").click(function(){
-                        var div = $(this).parent().parent();
+                        var div = $(this).parent("user-row");
                         var id = div.attr("id");
                         $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
@@ -147,12 +149,12 @@
             $(".change-auth").click(function(){
                 alert("WORKS");
                         var checked = $(this).is(":checked");
-                        var id = $(this).parent().parent().parent().parent().attr("id");
+                        var id = $(this).parent("user-row").attr("id");
                         var url = "";
                         if (checked){
-                            url = "/wienerberger/delete_user/";
+                            url = "/wienerberger/allow_access/";
                         } else {
-                            url = "/wienerberger/delete_user/";
+                            url = "/wienerberger/deny_access/";
                         }
 
                         $.post(url, {id:id}, function(data){
