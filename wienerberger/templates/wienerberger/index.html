@@ -137,7 +137,7 @@
         $(document).ready(function () {
 {#            load_content();#}
             $(".remove-user").click(function(){
-                        var div = $(this).parent("user-row");
+                        var div = $(this).parent(".user-row");
                         var id = div.attr("id");
                         $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
@@ -149,7 +149,7 @@
             $(".change-auth").click(function(){
                 alert("WORKS");
                         var checked = $(this).is(":checked");
-                        var id = $(this).parent("user-row").attr("id");
+                        var id = $(this).parent(".user-row").attr("id");
                         var url = "";
                         if (checked){
                             url = "/wienerberger/allow_access/";
