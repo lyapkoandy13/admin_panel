@@ -49,9 +49,9 @@ def send_message(request):
 	FCM_URL = "https://fcm.googleapis.com/fcm/send"
 	SERVER_KEY = "AIzaSyAkawp5NLDyMAXjzomidjTVG92q-8GIa64"
 
-	data = urllib.parse.urlencode(json.dumps(data)).encode('utf-8')
+	data = json.dumps(data).encode('utf-8')
 	req = urllib.request.Request(FCM_URL)
-	req.add_header('Content-Type', 'application/json')
+	req.add_header('Content-Type', 'application/json; charset=utf-8')
 	req.add_header('Authorization', 'key=' + SERVER_KEY)
 
 	with urllib.request.urlopen(req, data=data) as response:
