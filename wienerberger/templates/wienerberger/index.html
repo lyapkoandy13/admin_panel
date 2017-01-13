@@ -137,7 +137,7 @@
             $(".remove-user").click(function(){
 
                 var tr = $(this).parent().parent();
-                var id = div.attr("id");
+                var id = tr.attr("id");
                 $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
                                 tr.remove();
@@ -146,7 +146,6 @@
             });
 
             $(".change-auth").click(function(){
-                alert("WORKS");
                         var checked = $(this).is(":checked");
                         var id = $(this).parent().parent().parent().attr("id");
                         var url = "";
