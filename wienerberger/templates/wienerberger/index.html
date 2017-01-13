@@ -140,7 +140,7 @@
                 var id = div.attr("id");
                 $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
-                                div.remove();
+                                tr.remove();
                             }
                         });
             });
@@ -151,7 +151,7 @@
                         var id = $(this).parent().parent().parent().attr("id");
                         var url = "";
                         if (checked){
-                            url = "/wienerberger/allow_access/";
+                            url = "/wienerberger/grant_access/";
                         } else {
                             url = "/wienerberger/deny_access/";
                         }
