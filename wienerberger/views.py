@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -57,7 +58,7 @@ def send_message(request):
 	with urllib.request.urlopen(req, data=data) as response:
 		new_response = response.read()
 
-	return HttpResponse('success')
+	return HttpResponseRedirect('/wienerberer')
 
 @csrf_exempt
 def delete_user(request):
