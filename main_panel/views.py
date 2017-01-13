@@ -31,3 +31,9 @@ def logout(request):
 	auth.logout(request)
 
 	return redirect('/')
+
+def bazalt(request):
+	if request.user.is_authenticated():
+		return render(request, 'main_panel/bazalt.html')
+	else:
+		return render(request, 'main_panel/login.html')
