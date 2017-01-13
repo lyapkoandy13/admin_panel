@@ -14,9 +14,9 @@
         <form action="/wienerberger/send_message/" method="POST">
             {% csrf_token %}
             <h3>Send message</h3>
-            <textarea width="250" name="message" class="form-control" rows="4" style="resize: none">
-
+            <textarea name="message" class="form-control" cols="20" rows="4" style="resize: none">
             </textarea>
+            <br>
             <input type="submit" class="btn btn-primary form-control" value="Send"/>
 
         </form>

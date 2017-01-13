@@ -15,13 +15,25 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wienerberger/templates/wienerberger/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="147" column="47" lean-forward="false" selection-start-line="147" selection-start-column="47" selection-end-line="147" selection-end-column="47" />
+            <state relative-caret-position="306">
+              <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
               <folding>
-                <element signature="e#591#611#0#HTML" expanded="true" />
+                <element signature="e#589#609#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_panel.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main_panel/templates/main_panel/main_panel.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="44" lean-forward="false" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+              <folding>
+                <element signature="e#84#105#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,12 +92,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/wienerberger/models.py" />
-        <option value="$PROJECT_DIR$/main_panel/templates/main_panel/main_panel.html" />
         <option value="$PROJECT_DIR$/main_panel/views.py" />
         <option value="$PROJECT_DIR$/main_panel/templates/main_panel/layout.html" />
         <option value="$PROJECT_DIR$/wienerberger/urls.py" />
         <option value="$PROJECT_DIR$/wienerberger/views.py" />
         <option value="$PROJECT_DIR$/wienerberger/templates/wienerberger/index.html" />
+        <option value="$PROJECT_DIR$/main_panel/templates/main_panel/main_panel.html" />
       </list>
     </option>
   </component>
@@ -542,14 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_panel/templates/main_panel/main_panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_panel/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -632,10 +636,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wienerberger/templates/wienerberger/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="147" column="47" lean-forward="false" selection-start-line="147" selection-start-column="47" selection-end-line="147" selection-end-column="47" />
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
           <folding>
-            <element signature="e#591#611#0#HTML" expanded="true" />
+            <element signature="e#589#609#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_panel/templates/main_panel/main_panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="44" lean-forward="false" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+          <folding>
+            <element signature="e#84#105#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
