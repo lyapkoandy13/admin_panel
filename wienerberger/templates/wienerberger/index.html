@@ -36,8 +36,7 @@
                 </thead>
                 <tbody>
                 {% for user in wienerbergerusers %}
-                    <div class="user-row" id="{{ user.id }}">
-                        <tr>
+                        <tr class="user-row" id="{{ user.id }}">
                             <td>{{ user.id }}</td>
                             <td>{{ user.date }}</td>
                             <td>{{ user.firstname }}</td>
@@ -56,7 +55,6 @@
                             <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>
                             </td>
                         </tr>
-                    </div>
                 {% endfor %}
          
             </tbody>
@@ -137,19 +135,20 @@
         $(document).ready(function () {
 {#            load_content();#}
             $(".remove-user").click(function(){
-                        var div = $(this).parents(".user-row");
-                        var id = div.attr("id");
-                        $.post("/wienerberger/delete_user/", {id: id}, function(data){
+
+                var tr = $(this).parent().parent();
+                var id = div.attr("id");
+                $.post("/wienerberger/delete_user/", {id: id}, function(data){
                             if (data=="success") {
                                 div.remove();
                             }
                         });
-                    });
+            });
 
             $(".change-auth").click(function(){
                 alert("WORKS");
                         var checked = $(this).is(":checked");
-                        var id = $(this).parents(".user-row").attr("id");
+                        var id = $(this).parent().parent().parent().attr("id");
                         var url = "";
                         if (checked){
                             url = "/wienerberger/allow_access/";
