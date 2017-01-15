@@ -1,17 +1,14 @@
+import os
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
-from django.contrib import auth
+from django.conf import settings
 from django.shortcuts import redirect
 import json
 import urllib.request
 from wienerberger.models import WienerbergerUser
 from django.views.decorators.csrf import csrf_exempt
 import datetime
-from django.http import JsonResponse
-from django.core import  serializers
 
 # Create your views here.
 
@@ -83,8 +80,11 @@ def deny_access(request):
 	return HttpResponse("success")
 
 
-# @csrf_exempt
-# def get_users(request):
-# 	a = WienerbergerUser.objects.all()
-# 	json_data = serializers.serialize('json', list(a), fields=('id','firstname','secondname','token','auth','date'))
-# 	return JsonResponse(json_data, safe=False)
+def download_wienerberger(request):
+	file_path = os.path.join("/usr/pushmessanger/app-release.apk")
+	if os.path.exists(file_path):
+		with open(file_path, 'rb') as fh:
+			response = HttpResponse(fh.read(), content_type="application/vnd.android.package-archive")
+			response['Content-Disposition'] = 'inline; filename=' + 'wienerberger.apk'
+			return response
+	return redirect("/wienerberger/")

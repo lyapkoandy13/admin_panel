@@ -8,16 +8,15 @@
 		<p></p>
 
 		<div class="row">        
-		    <a href="" class="btn btn-success "><span class="glyphicon glyphicon-download-alt"></span> Download android app</a>
+		    <a href="/wienerberger/download_wienrberger" class="btn btn-success "><span class="glyphicon glyphicon-download-alt"></span> Download android app</a>
 		</div><br>
 
         <form action="/wienerberger/send_message/" method="POST">
             {% csrf_token %}
             <h3>Send message</h3>
-            <textarea name="message" class="form-control" cols="20" rows="4" style="resize: none">
-            </textarea>
+            <textarea name="message" class="form-control" cols="20" rows="4" style="resize: none"></textarea>
             <br>
-            <input type="submit" class="btn btn-primary form-control" value="Send"/>
+            <input type="submit" class="btn btn-primary" value="Send"/>
 
         </form>
 
