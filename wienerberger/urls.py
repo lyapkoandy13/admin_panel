@@ -10,4 +10,5 @@ urlpatterns = [
 	url(r'^grant_access/', views.grant_access, name="grant_access"),
 	url(r'^deny_access/', views.deny_access, name="deny_access"),
 	url(r'^download_wienerberger/', views.download_wienerberger, name="download_wienerberger"),
+	url(r'^get_version/', views.get_version, name="get_version"),
 ]

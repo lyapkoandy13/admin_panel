@@ -88,3 +88,9 @@ def download_wienerberger(request):
 			response['Content-Disposition'] = 'inline; filename=' + 'wienerberger.apk'
 			return response
 	return redirect("/wienerberger/")
+
+def get_version(request):
+	data = ""
+	with open('/usr/pushmessanger/version.txt', 'r') as myfile:
+		data = myfile.read().replace('\n', '')
+	return HttpResponse(data)
