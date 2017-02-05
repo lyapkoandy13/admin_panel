@@ -15,9 +15,9 @@ import datetime
 def index(request):
 	if request.user.is_authenticated():
 		bazaltusers = BazaltUser.objects.all()
-		return render(request, 'main_panel/bazalt.html')
+		return render(request, 'bazalt/index.html', {'bazaltusers' : bazaltusers})
 	else:
-		return render(request, 'main_panel/login.html')
+		return redirect('/')
 
 @csrf_exempt
 def create_user(request):

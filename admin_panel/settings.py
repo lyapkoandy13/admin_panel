@@ -26,6 +26,7 @@ SECRET_KEY = 'n$8^y4@3d=t67jb1z+=nlhipg*(162cecn4li!=kh+km9oq!ls'
 DEBUG = True
 
 ALLOWED_HOSTS =[
+    '192.168.0.233',
 	'31.41.88.210',
     'localhost',
 ]
@@ -34,6 +35,7 @@ ALLOWED_HOSTS =[
 # Application definition
 
 INSTALLED_APPS = (
+    'bazalt',
     'main_panel',
     'wienerberger',
     'django.contrib.admin',
