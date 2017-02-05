@@ -1,0 +1,84 @@
+{% extends 'main_panel/layout.html' %}
+
+{% block content %}
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static "main_panel/css/switch.css" %}">
+	<div class="container body-content">
+		<p></p>
+
+		<div class="row">        
+		    <a href="/bazalt/download_bazalt/" class="btn btn-success "><span class="glyphicon glyphicon-download-alt"></span> Download android app</a>
+		</div><br>
+
+		<table id="users" class="table table-hover table-striped ">
+                <thead>
+                  <tr id="select-all-tr">
+                    <th>Id</th>
+                    <th>Agent Code</th>
+                    <th>Date</th>
+                    <th>Firstname</th>
+                    <th>Secondname</th>
+                    <th>Email</th>
+                    <th>Дозволити пересилку даних</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for user in bazaltusers %}
+                        <tr class="user-row" id="{{ user.id }}">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.agentCode}}
+                            <td>{{ user.date }}</td>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.secondname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <label class="switch">
+                                    {% if user.auth == 1 %}
+                                        <input class="change-auth" type="checkbox" checked>
+                                    {% else %}
+                                        <input class="change-auth" type="checkbox">
+                                    {% endif %}
+                                  <div class="slider round"></div>
+                                </label>
+                            </td>
+                            <td><button type="button" class="btn btn-danger remove-user"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+                            </td>
+                        </tr>
+                {% endfor %}
+         
+            </tbody>
+        </table>
+
+	</div>
+
+    <script type="text/javascript">
+     $(document).ready(function () {
+{#            load_content();#}
+            $(".remove-user").click(function(){
+
+                var tr = $(this).parent().parent();
+                var id = tr.attr("id");
+                $.post("/bazalt/delete_user/", {id: id}, function(data){
+                            if (data=="success") {
+                                tr.remove();
+                            }
+                        });
+            });
+
+            $(".change-auth").click(function(){
+                        var checked = $(this).is(":checked");
+                        var id = $(this).parent().parent().parent().attr("id");
+                        var url = "";
+                        if (checked){
+                            url = "/bazalt/grant_access/";
+                        } else {
+                            url = "/bazalt/deny_access/";
+                        }
+
+                        $.post(url, {id:id}, function(data){
+
+                        });
+                    });
+        });
+    </script>
+{% endblock content %}
