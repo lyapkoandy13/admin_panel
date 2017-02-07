@@ -59,9 +59,9 @@ def download_bazalt(request):
 	if os.path.exists(file_path):
 		with open(file_path, 'rb') as fh:
 			response = HttpResponse(fh.read(), content_type="application/vnd.android.package-archive")
-			response['Content-Disposition'] = 'inline; filename=' + 'wienerberger.apk'
+			response['Content-Disposition'] = 'inline; filename=' + 'bazalt.apk'
 			return response
-	return redirect("/wienerberger/")
+	return redirect("/bazalt/")
 
 def get_version(request):
 	data = ""
