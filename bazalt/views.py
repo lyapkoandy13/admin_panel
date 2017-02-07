@@ -26,7 +26,7 @@ def create_user(request):
 	secondname = request.POST.get('secondname','')
 	email = request.POST.get('email','')
 	date = datetime.datetime.now().strftime("%d-%m-%Y")
-	a = BazlaltUser(token=token,firstname=firstname,secondname=secondname,email=email,auth=0,date=date,agentCode="None")
+	a = BazaltUser(token=token,firstname=firstname,secondname=secondname,email=email,auth=0,date=date,agentCode="None")
 	a.save()
 	
 	return HttpResponse('success')
