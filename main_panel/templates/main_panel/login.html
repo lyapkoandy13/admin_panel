@@ -63,7 +63,7 @@
                 $(".validation").html("");
                 $.ajax({
                     type: "post",
-                    url: "/ajax/check/user/",
+                    url: "/admin/ajax/check/user/",
                     cache: false,    
                     data: {
                     	'user_login': $("#user_login").val(),
@@ -76,7 +76,7 @@
                         }
                         else {
                             $("#user_code").val(response);
-                            location.href = "/"
+                            location.href = "/admin/"
                         }
                     }, 
                     error: function(response){      

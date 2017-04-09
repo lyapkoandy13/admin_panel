@@ -25,16 +25,13 @@ SECRET_KEY = 'n$8^y4@3d=t67jb1z+=nlhipg*(162cecn4li!=kh+km9oq!ls'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =[
-    '192.168.0.233',
-	'31.41.88.210',
-    'localhost',
-]
+ALLOWED_HOSTS =['*']
 
 
 # Application definition
 
 INSTALLED_APPS = (
+    'main',
     'bazalt',
     'main_panel',
     'wienerberger',
@@ -106,8 +103,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = ''
-
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ( os.path.join('static'), )
+STATIC_ROOT = os.path.join(BASE_DIR, 'public_assets')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Email settings
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'robot@aits.ua'
+EMAIL_HOST_PASSWORD = '37Rh!_09=S/U'
+EMAIL_PORT = 587
+
+ADMINS = [('Andy','lyapkoandy13@gmail.com'), ('Sergiy', 'director@aits.ua')]
