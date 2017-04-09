@@ -615,7 +615,7 @@ input:focus, textarea:focus {
 .copyright {    
     letter-spacing: 0.0em;
     padding-top: 10px;
-    font-size: 18px;
+    font-size: 17px;
     font-family: "Circe-Regular";
 }
 
@@ -626,7 +626,7 @@ span.reserved {
 }
 
 .partners {
-    padding: 27px 0 0 0px;
+    padding: 40px 0 0 0px;
  /*   width: 747px;*/
     margin: auto;
     text-align: center;
@@ -745,7 +745,10 @@ margin-top: 100px;}
         margin-top: 30px;
     }
     #about-us .main-text-block{
-        font-size: 30px;
+        font-size: 32px;
+    }
+    #about-us .main-text-block span{
+        font-size: 27px;
     }
     #about-us{
         background-position: center; 
@@ -754,7 +757,7 @@ margin-top: 100px;}
         background-repeat: no-repeat;
     }
     #about-us .second-text-block{
-        font-size: 32px;
+        font-size: 27px;
     }
     .second-text-block{
         margin-bottom: 27px;
@@ -870,7 +873,7 @@ margin-top: 100px;}
         height: auto;
         display: table;
         width: 100%;
-        padding: 20px 20px;
+        padding: 41px 0px 40px;
     }
     #partners div{
         width: 100%;
@@ -969,6 +972,33 @@ margin-top: 100px;}
         width: 100%;
     }
 }
+
+@media all and (max-width: 1024px){
+  #contacts {
+    height: auto;
+  }
+  #form-div{
+        position: relative;
+        width: 460px;
+        float: none;
+        margin:auto;
+    }
+    .main-header-block-contacts {
+    width: 10%;
+    margin: auto;
+    height: 80px;
+    }
+    .text-block-contacts {
+        font-size: 18px;
+        text-align: center;
+        color: #16272c;
+        padding-left: 0px;
+        position: relative;
+        width: 420px;
+        margin: auto;
+    }
+}
+
 @media all and (max-width: 720px) {
     header{
         height: 76px;
@@ -997,6 +1027,12 @@ margin-top: 100px;}
         font-size: 26px;
         margin-top: 0;
     }
+
+    #about-us .main-text-block span{
+        font-size: 20px;
+        margin-top: 0;
+    }
+
     #about-us .second-text-block{
         font-size: 20px;
         margin-top: 45px;
