@@ -616,7 +616,7 @@ input:focus, textarea:focus {
     letter-spacing: 0.0em;
     padding-top: 10px;
     font-size: 17px;
-    font-family: "Circe-Regular";
+    /*font-family: "Circe-Regular";*/
 }
 
 span.reserved {
@@ -841,9 +841,10 @@ margin-top: 100px;}
         width: 100%;
     }
     #mail-complete, #mail-loading {
-        margin: auto;
-        width: 100%;
-        float: none;
+    display: none;    position: relative;
+    width: 460px;
+    margin-right: 150px;
+    float: right;
     }
     #mail-block{
         text-align: center;
@@ -1282,9 +1283,10 @@ margin-top: 100px;}
         width: 100%;
     }
     #mail-complete, #mail-loading {
-        margin: auto;
-        width: 100%;
-        float: none;
+    display: none;    position: relative;
+    width: 460px;
+    margin-right: 150px;
+    float: right;
     }
     
     #mail-block{

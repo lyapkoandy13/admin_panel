@@ -9,18 +9,13 @@ def index(request):
 	return render(request, 'main/index.html')
 
 def ajax_send_mail(request):
-	if request.method == "POST":
-		# try:
-		name = request.POST.get('name')
-		email = request.POST.get('email')
-		text = request.POST.get('text')
-		message = ("Name: "+name
-			+ "\nEmail: "+email
-			+ "\n\n "+ text)
-		emailMessage = EmailMessage('Mail from site', message, to=['lyapkoandy13@gmail.com','director@aits.ua'])
+	try:
+		name = request.GET.get('name')
+		email = request.GET.get('email')
+		text = request.GET.get('text')
+		message = ("Name: "+name+ "\nEmail: "+email+ "\n\n "+ text)
+		emailMessage = EmailMessage('Mail from site', message, to=['director@aits.ua'])
 		emailMessage.send()
 		return HttpResponse("ok")
-		# except:
-		# 	return HttpResponse("")
-	else:
-		return redirect('/')
+	except:
+		return HttpResponse("")

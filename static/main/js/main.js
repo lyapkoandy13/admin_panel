@@ -18,7 +18,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
- 
+
 var url = "/AITS/";
 var showMenu = false;
 $(document).ready(function() {
