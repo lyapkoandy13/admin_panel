@@ -619,6 +619,16 @@ input:focus, textarea:focus {
     /*font-family: "Circe-Regular";*/
 }
 
+.copyright #aits-link {    
+  float: left;
+  padding-left:15px;
+}
+
+.copyright #admin-link {    
+  float: right;
+  padding-right: 15px;
+}
+
 span.reserved {
   font-family: Comunica;
   margin-left: 6px;
