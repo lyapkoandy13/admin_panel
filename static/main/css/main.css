@@ -492,13 +492,13 @@ width: 10%;
     display: none;    position: relative;
     width: 460px;
     margin-right: 150px;
-    float: right;
+    /*float: right;*/
 }
 #mail-loading {
     display: none;    position: relative;
     width: 460px;
     margin-right: 150px;
-    float: right;
+    /*float: right;*/
 }
 #mail-complete .main-text-block {
     font-size: 25px;
@@ -854,7 +854,7 @@ margin-top: 100px;}
     display: none;    position: relative;
     width: 460px;
     margin-right: 150px;
-    float: right;
+    /*float: right;*/
     }
     #mail-block{
         text-align: center;
@@ -1296,7 +1296,7 @@ margin-top: 100px;}
     display: none;    position: relative;
     width: 460px;
     margin-right: 150px;
-    float: right;
+    /*float: right;*/
     }
     
     #mail-block{
@@ -1325,7 +1325,7 @@ margin-top: 100px;}
         height: auto;
         display: table;
         width: 100%;
-        padding: 0;
+        padding: 41px 0px 40px;
     }
     #partners .partners {
         width: 100%;
